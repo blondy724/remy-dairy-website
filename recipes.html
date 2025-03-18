@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block title %}Recipes{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="text-center">Recipes</h1>
+    <p class="text-center">Explore simple, mouthwatering ideas using our premium dairy products. Perfect for any occasion!</p>
+
+    <!-- Categories -->
+    <section class="mt-4">
+        <h2 class="text-primary">Breakfast</h2>
+        <article class="mt-3">
+            <h3 class="text-secondary">Golden Butter Croissants</h3>
+            <p><strong>Prep Time:</strong> 20 min | <strong>Bake Time:</strong> 25 min</p>
+            <p>Flaky and buttery croissants made with our rich butter.</p>
+            <ul>
+                <li><strong>Ingredients:</strong> Butter, flour, yeast, sugar, salt...</li>
+                <li><strong>Instructions:</strong>
+                    <ol>
+                        <li>Prepare the dough by mixing dry and wet ingredients.</li>
+                        <li>Layer with butter, fold, and roll out several times.</li>
+                        <li>Shape, let rise, and bake until golden brown.</li>
+                    </ol>
+                </li>
+            </ul>
+            <p><strong>Tip:</strong> Serve warm for the ultimate experience!</p>
+        </article>
+    </section>
+
+    <section class="mt-5">
+        <h2 class="text-primary">Desserts</h2>
+        <article class="mt-3">
+            <h3 class="text-secondary">Cheesy Chocolate Brownies</h3>
+            <p><strong>Prep Time:</strong> 15 min | <strong>Bake Time:</strong> 30 min</p>
+            <p>A delightful twist on classic brownies with a cheesy layer.</p>
+            <ul>
+                <li><strong>Ingredients:</strong> Cream cheese, butter, cocoa powder, sugar, eggs...</li>
+                <li><strong>Instructions:</strong>
+                    <ol>
+                        <li>Mix brownie batter and spread half in a pan.</li>
+                        <li>Blend cream cheese with sugar and spread over the batter.</li>
+                        <li>Layer the remaining batter and bake until firm.</li>
+                    </ol>
+                </li>
+            </ul>
+        </article>
+    </section>
+
+    <section class="mt-5">
+        <h2 class="text-primary">Beverages</h2>
+        <article class="mt-3">
+            <h3 class="text-secondary">Refreshing Yogurt Smoothie</h3>
+            <p><strong>Prep Time:</strong> 5 min | <strong>Chill Time:</strong> 5 min</p>
+            <p>A creamy drink packed with flavor and made with our fresh yogurt.</p>
+            <ul>
+                <li><strong>Ingredients:</strong> Yogurt, honey, fruits (e.g., bananas, berries), ice cubes...</li>
+                <li><strong>Instructions:</strong>
+                    <ol>
+                        <li>Blend yogurt, honey, and fruits until smooth.</li>
+                        <li>Add ice and blend again for a chilled treat.</li>
+                    </ol>
+                </li>
+            </ul>
+            <p><strong>Tip:</strong> Use frozen fruits for a thicker texture.</p>
+        </article>
+    </section>
+
+    <!-- User Submissions Section -->
+    <section class="mt-5">
+        <h2 class="text-primary">User Submissions</h2>
+        <p>Have a favorite recipe using our butter, cheese, or yogurt? Share it with us! Fill out the form below, and we might feature it here.</p>
+        
+        <!-- Success Message -->
+        {% if success %}
+        <div id="successMessage" class="alert alert-success" role="alert">
+            Thank you for your recipe! It has been received and will be reviewed shortly.
+        </div>
+        {% endif %}
+
+        <!-- Submission Form -->
+        <form method="POST" action="{{ url_for('recipes') }}" class="mt-3">
+            <div class="mb-3">
+                <label for="recipeTitle" class="form-label">Recipe Title</label>
+                <input type="text" class="form-control" id="recipeTitle" name="recipe_title" placeholder="Enter the recipe title" required>
+            </div>
+            <div class="mb-3">
+                <label for="recipeDetails" class="form-label">Recipe Details</label>
+                <textarea class="form-control" id="recipeDetails" name="recipe_details" rows="4" placeholder="Write your recipe here..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit Recipe</button>
+        </form>
+    </section>
+
+    <section class="mt-5">
+        <p class="text-center">
+            <strong>Inspired?</strong> Grab the freshest ingredients from our 
+            <a href="/products.html" class="text-decoration-none">Products Page</a> 
+            and get started on these delicious recipes today!
+        </p>
+    </section>
+</div>
+
+<!-- JavaScript to hide the success message -->
+<script>
+    window.onload = function() {
+        const successMessage = document.getElementById('successMessage');
+        if (successMessage) {
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 5000); // 5000 milliseconds = 5 seconds
+        }
+    };
+</script>
+{% endblock %}

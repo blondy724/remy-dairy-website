@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Terms of Service{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="display-4">Terms of Service</h1>
+    <p>Welcome to our website. By accessing or using our website, you agree to comply with and be bound by the following terms and conditions:</p>
+    
+    <h5>Use of Our Website</h5>
+    <p>You may use our website for personal, non-commercial purposes only. Any unauthorized use of the site is prohibited.</p>
+
+    <h5>Orders and Payments</h5>
+    <p>All orders made through our website are subject to acceptance and availability. We reserve the right to cancel orders or refuse service at our discretion.</p>
+
+    <h5>Limitation of Liability</h5>
+    <p>We are not responsible for any indirect, incidental, or consequential damages arising from the use of our website.</p>
+
+    <h5>Changes to These Terms</h5>
+    <p>We reserve the right to modify these Terms of Service at any time. Updates will be posted on this page, and your continued use of the website constitutes acceptance of these changes.</p>
+
+    <h5>Contact Us</h5>
+    <p>If you have any questions about our Terms of Service, feel free to <a href="{{ url_for('contact') }}">contact us</a>.</p>
+</div>
+{% endblock %}

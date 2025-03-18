@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Privacy Policy{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="display-4">Privacy Policy</h1>
+    <p>Your privacy is important to us. This policy outlines how we collect, use, and safeguard your personal information when you use our website.</p>
+    
+    <h5>Information We Collect</h5>
+    <p>We may collect the following information when you use our site:</p>
+    <ul>
+        <li>Personal details such as name, email address, and phone number.</li>
+        <li>Browser and device information for improving user experience.</li>
+    </ul>
+
+    <h5>How We Use Your Information</h5>
+    <p>The information we collect is used to:</p>
+    <ul>
+        <li>Process your orders and deliver products.</li>
+        <li>Respond to your inquiries and improve our services.</li>
+        <li>Send updates, promotions, or newsletters with your consent.</li>
+    </ul>
+
+    <h5>Security of Your Information</h5>
+    <p>We implement appropriate technical and organizational measures to protect your personal information from unauthorized access, loss, or misuse.</p>
+
+    <h5>Contact Us</h5>
+    <p>If you have any questions about this Privacy Policy, feel free to <a href="{{ url_for('contact') }}">contact us</a>.</p>
+</div>
+{% endblock %}

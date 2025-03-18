@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %}{{ product.name }} Details{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <!-- Product Header -->
+    <div class="text-center">
+        <h1 class="display-4 mb-3">{{ product.name }}</h1>
+        <p class="text-muted">{{ product.description }}</p>
+        {% if product.image %}
+        <img src="{{ url_for('static', filename=product.image) }}" alt="{{ product.name }}" class="img-fluid rounded mb-4" style="max-width: 300px;">
+        {% else %}
+        <p><em>No image available for this product.</em></p>
+        {% endif %}
+    </div>
+
+    <!-- Product Details -->
+    <div class="row">
+        <!-- Left Column: Benefits & Storage -->
+        <div class="col-md-6">
+            {% if product.benefits %}
+            <h5>Benefits</h5>
+            <ul class="list-group list-group-flush">
+                {% for benefit in product.benefits.split(', ') %}
+                <li class="list-group-item">{{ benefit }}</li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p><em>No benefits information available for this product.</em></p>
+            {% endif %}
+
+            {% if product.storage_instructions %}
+            <h5 class="mt-4">Storage Instructions</h5>
+            <p>{{ product.storage_instructions }}</p>
+            {% else %}
+            <p><em>Storage instructions not available.</em></p>
+            {% endif %}
+        </div>
+
+        <!-- Right Column: Usage & Nutritional Information -->
+        <div class="col-md-6">
+            {% if product.usage_ideas %}
+            <h5>How to Use</h5>
+            <ul class="list-group list-group-flush">
+                {% for usage in product.usage_ideas.split(', ') %}
+                <li class="list-group-item">{{ usage }}</li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p><em>Usage ideas not available.</em></p>
+            {% endif %}
+
+            <h5 class="mt-4">Nutritional Information (per 100g/ml)</h5>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Nutrient</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Energy</td>
+                        <td>{{ product.energy if product.energy else "N/A" }}</td>
+                    </tr>
+                    <tr>
+                        <td>Protein</td>
+                        <td>{{ product.protein if product.protein else "N/A" }}</td>
+                    </tr>
+                    <tr>
+                        <td>Fat</td>
+                        <td>{{ product.fat if product.fat else "N/A" }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Back to Products Button -->
+    <div class="mt-5 text-center">
+        <a href="{{ url_for('product_page') }}" class="btn btn-outline-primary">Back to Products</a>
+    </div>
+</div>
+{% endblock %}
